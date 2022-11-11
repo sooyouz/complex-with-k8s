@@ -12,4 +12,10 @@ after_success:
   - docker build -t sooyouz/multi-nginx -f ./nginx/Dockerfile ./nginx
   - docker build -t sooyouz/multi-server -f ./nginx/Dockerfile ./server
   - docker build -t sooyouz/multi-worker -f ./nginx/Dockerfile ./worker
+  - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push sooyouz/multi-client
+  - docker push sooyouz/multi-nginx
+  - docker push sooyouz/multi-server
+  - docker push sooyouz/multi-worker
+
 language: generic 
