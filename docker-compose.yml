@@ -1,14 +1,6 @@
 version: '3'
 
 services:
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      - POSTGRES_PASSWORD=sooyouz
-
-  redis:
-    image: 'redis:latest'
-
   server:
     image: "sooyouz/multi-server"
     mem_limit: 128m
@@ -21,10 +13,6 @@ services:
       - PGDATABASE=$PGDATABASE
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
-    depends_on:
-      - redis
-      - postgres
-  
   client:
     image: "sooyouz/multi-client"
     mem_limit: 128m
@@ -36,15 +24,13 @@ services:
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
-    depends_on:
-      - redis
   nginx:
-    image: "cygnetops/multi-nginx-10-14"
+    image: "sooyouz/multi-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
       - "80:80"
     depends_on:
       - client
-      - api
+      - server
   
