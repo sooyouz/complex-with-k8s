@@ -13,7 +13,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <Link to={"/"}>Home</Link>
+        <Link to={"/"}>Home Kubernetes with GLOUD</Link>
         <Link to={"/otherpage"}>Other Page</Link>
 
         <a
