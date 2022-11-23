@@ -10,6 +10,6 @@ docker push sooyouz/multi-worker:latest
 
 kubectl apply -f k8s
 
-kubectl set image deployments/server-deployments server=sooyouz/multi-server:$GIT_SHA
-kubectl set image deployments/client-deployments client=sooyouz/multi-client:$GIT_SHA
-kubectl set image deployments/worker-deployments worker=sooyouz/multi-worker:$GIT_SHA
+kubectl set image deployments/server-deployment server=sooyouz/multi-server:$GIT_SHA
+kubectl set image deployments/client-deployment client=sooyouz/multi-client:$GIT_SHA
+kubectl set image deployments/worker-deployment worker=sooyouz/multi-worker:$GIT_SHA
